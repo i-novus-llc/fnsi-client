@@ -1,0 +1,7 @@
+id,code,config_name,config_value
+cd132d09-708c-4345-960e-5a966df5f216;сonnection.url.versions;URL сервиса для получения списка версий справочника;https://nsi.rosminzdrav.ru:443/port/rest/versions
+85e12753-c98e-44f3-b168-47e6d0dd4b65;сonnection.url.compare;URL сервиса для сравнения двух версий справочника;https://nsi.rosminzdrav.ru:443/port/rest/compare
+facc836e-e522-454a-9258-7f1410b63446;сonnection.url.data;URL сервиса для получения данных справочника;https://nsi.rosminzdrav.ru:443/port/rest/data
+9b27df2f-e417-4d08-8896-3a1c0f3cc16e;сonnection.url.passport;URL сервиса для получения паспорта и структуры справочника;https://nsi.rosminzdrav.ru:443/port/rest/passport
+d9c5cb0b-c303-46c9-b421-e85ebb3d79de;connection.general.timeout;Общее время ожидания соединения в миллисекундах;5000
+71055d7a-3b44-4046-9437-941934c61e62;connection.socket.timeout;Общее время ожидания ответа после соединения в миллисекундах;5000

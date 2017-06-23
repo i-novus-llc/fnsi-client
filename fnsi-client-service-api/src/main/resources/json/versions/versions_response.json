@@ -1,0 +1,61 @@
+{
+  "result": "string",
+  "resultText": "string",
+  "resultCode": "string",
+  "total": 0,
+  "list": [
+    {
+      "version": "string",
+      "createDate": "2017-06-14T14:49:06.049Z",
+      "publishDate": "2017-06-14T14:49:06.049Z",
+      "lastUpdate": "2017-06-14T14:49:06.049Z",
+      "releaseNotes": "string",
+      "passport": {
+        "result": "string",
+        "resultText": "string",
+        "resultCode": "string",
+        "identifier": "string",
+        "oid": "string",
+        "version": "string",
+        "rowsCount": 0,
+        "createDate": "2017-06-14T14:49:06.049Z",
+        "publishDate": "2017-06-14T14:49:06.049Z",
+        "lastUpdate": "2017-06-14T14:49:06.049Z",
+        "fullName": "string",
+        "shortName": "string",
+        "description": "string",
+        "structureNotes": "string",
+        "releaseNotes": "string",
+        "law": "string",
+        "respOrganizationId": 0,
+        "authOrganizationId": 0,
+        "typeId": 0,
+        "groupId": 0,
+        "approveDate": "2017-06-14T14:49:06.049Z",
+        "fields": [
+          {
+            "field": "string",
+            "dataType": "string",
+            "alias": "string",
+            "description": "string"
+          }
+        ],
+        "keys": [
+          {
+            "field": "string",
+            "type": "string"
+          }
+        ],
+        "codes": [
+          {
+            "value": "string",
+            "type": "string"
+          }
+        ],
+        "archive": true,
+        "hierarchical": true
+      },
+      "archive": true
+    }
+  ]
+}

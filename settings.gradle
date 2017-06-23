@@ -1,0 +1,4 @@
+rootProject.name = 'fnsi-client'
+
+include 'fnsi-client-service-api',
+        'fnsi-client-service-impl'

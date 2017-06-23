@@ -1,0 +1,14 @@
+{
+  "result": "string",
+  "resultText": "string",
+  "resultCode": "string",
+  "total": 0,
+  "list": [
+    [
+      {
+        "column": "string",
+        "value": "string"
+      }
+    ]
+  ]
+}

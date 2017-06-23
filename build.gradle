@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        maven {
+            url "http://repository.jboss.org/nexus/content/groups/public/"
+        }
+    }
+    dependencies {
+        classpath 'org.hibernate.build.gradle:gradle-maven-publish-auth:2.0.1'
+    }
+}
+
+plugins {
+    id "net.linguica.maven-settings" version "0.5"
+    id 'nebula.lint' version '7.4.0'
+}
+
+ext {
+    junit_version = '4.12'
+    resteasy_version = '3.0.19.Final'
+    org_springframework_version = '4.3.7.RELEASE'
+    org_postgresql_driver_version = '9.4-1200-jdbc41'
+    org_liquibase_version = '1.2.0'
+    org_hibernate_hibernate_core_version = '5.1.4.Final'
+    org_slf4j_version = '1.7.24'
+    javax_ws_rs_version = '2.0.1'
+    mainGroup = 'ru.inovus.util'
+}
+
+allprojects {
+    version '1.0.2'
+    apply plugin: 'java'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+
+    // Set visible Maven's configurations for Gradle from settings.xml
+    apply plugin: 'net.linguica.maven-settings'
+    // For publishing (deploy) to local and remote repositories
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'maven-publish-auth'
+
+    // For Gradle scripts'  maintenance and dependencies' cleaner
+    apply plugin: 'nebula.lint'
+    gradleLint.rules = ['all-dependency']
+
+    compileJava.options.encoding = 'UTF-8'
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven {
+            url "http://repository.jboss.org/nexus/content/groups/public/"
+        }
+    }
+}
+

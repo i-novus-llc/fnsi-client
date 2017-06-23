@@ -1,0 +1,49 @@
+{
+  "result": "string",
+  "resultText": "string",
+  "resultCode": "string",
+  "fields": [
+    {
+      "field": {
+        "Name": "string",
+        "Alias": "string",
+        "Description": "string",
+        "DataType": "string",
+        "ContentType": "string",
+        "Number": 0,
+        "EmptyAllowed": true,
+        "Visible": true,
+        "MinLength": 0,
+        "MaxLength": 0
+      },
+      "operation": "DELETE"
+    }
+  ],
+  "keys": [
+    {
+      "key": {
+        "number": 0,
+        "name": "string",
+        "type": "string",
+        "components": [
+          {
+            "number": 0,
+            "field": "string",
+            "type": "string"
+          }
+        ]
+      },
+      "operation": "DELETE"
+    }
+  ],
+  "data": {
+    "total": 0,
+    "list": [
+      {
+        "additionalProp1": {},
+        "additionalProp2": {},
+        "additionalProp3": {}
+      }
+    ]
+  }
+}
