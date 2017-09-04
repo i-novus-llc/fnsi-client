@@ -85,7 +85,7 @@ jsonSchema2Pojo {
 
     // Package name used for generated Java classes (for types where a fully qualified name has not
     // been supplied in the schema using the 'javaType' property).
-    final targetPackage = 'ru.inovus.utils.fnsi.client.service.api.dto.generated'
+    final targetPackage = 'ru.inovus.util.fnsi.client.service.api.dto.generated'
 
     // The characters that should be considered as word delimiters when creating Java Bean property
     // names from JSON property names. If blank or not set, JSON properties will be considered to
