@@ -12,7 +12,7 @@ public abstract class IdentifiableQueryDto implements FieldValueBuilder {
      * Идентификатор справочника. Обязательное поле.
      */
     @NotBlank(message = "Identifier of resource must be present")
-    @Pattern(regexp = "(\\d+?\\.){8}\\d+", message = "Identifier must have 7 numbers divided by dot")
+    @Pattern(regexp = "(\\d+?\\.){8,10}\\d+", message = "Identifier must contain numbers divided by dot")
     private String identifier;
 
     public String getIdentifier() {
