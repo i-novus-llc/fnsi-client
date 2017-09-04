@@ -1,3 +1,57 @@
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'maven-publish-auth'
+
+def mainGroup = 'ru.inovus.util'
+
+group mainGroup
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "http://repository.jboss.org/nexus/content/groups/public/"
+        }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.hibernate.build.gradle:gradle-maven-publish-auth:2.0.1'
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'i-novus-central'
+        url = 'http://maven.i-novus.ru/libs-release-local'
+    }
+
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name "i-novus-snapshots"
+            url "http://maven.i-novus.ru/libs-snapshot-local"
+        }
+
+        maven {
+            name "i-novus-central"
+            url "http://maven.i-novus.ru/libs-release-local"
+        }
+    }
+}
+
 dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.8'
     compile "javax.el:el-api:2.2.1-b04"
