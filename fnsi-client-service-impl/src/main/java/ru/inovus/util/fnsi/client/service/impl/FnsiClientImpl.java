@@ -23,6 +23,8 @@ import java.io.IOException;
 public class FnsiClientImpl implements FnsiClient {
     private static final Logger logger = LoggerFactory.getLogger(FnsiClientImpl.class);
 
+    private String userKey;
+
     @Autowired
     private RestClient<VersionsQueryDto> versionsClient;
     @Autowired
@@ -44,6 +46,7 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public VersionsResponseDto findVersions(VersionsQueryDto query, SettingDto settings) throws ValidationsException {
         versionsValidator.doValidation(query, settings);
+        query.setUserKey(userKey);
         String stringResponse = versionsClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         VersionsResponseDto versionsResponseDto = null;
@@ -58,7 +61,7 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public PassportResponseDto findPassport(PassportQueryDto query, SettingDto settings) throws ValidationsException {
         passportValidator.doValidation(query, settings);
-
+        query.setUserKey(userKey);
         String stringResponse = passportClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         PassportResponseDto passportResponseDto = null;
@@ -73,7 +76,7 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public DataResponseDto findData(DataQueryDto query, SettingDto settings) throws ValidationsException {
         dataValidator.doValidation(query, settings);
-
+        query.setUserKey(userKey);
         String stringResponse = dataClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         DataResponseDto dataResponseDto = null;
@@ -88,7 +91,7 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public CompareResponseDto findCompares(CompareQueryDto query, SettingDto settings) throws ValidationsException {
         compareValidator.doValidation(query, settings);
-
+        query.setUserKey(userKey);
         String stringResponse = compareClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         CompareResponseDto compareResponseDto = null;
@@ -103,5 +106,9 @@ public class FnsiClientImpl implements FnsiClient {
 
     private void logParseResponseException(String serviceUrl, String stringResponse) {
         logger.error("Could not parse response " + stringResponse + "from " + serviceUrl);
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
     }
 }

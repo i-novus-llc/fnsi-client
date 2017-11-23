@@ -19,7 +19,7 @@ import ru.inovus.util.fnsi.client.service.api.dto.query.VersionsQueryDto;
 
 import java.util.Calendar;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @ContextConfiguration(locations = {"classpath:ru/inovus/util/fnsi/client/service/impl/fnsi-client-service-impl.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,7 +28,7 @@ public class FnsiClientImplTest {
     private final String RESULT_OK = "OK";
     private final String IDENTIFIER = "1.2.643.5.1.13.13.11.1080";
     private final int PAGE = 1;
-    private final int SIZE = Integer.MAX_VALUE;
+    private final int SIZE = 200;
     private final int CONNECTION_TIME_OUT = 5000;
     private final int SOCKET_TIME_OUT = 5000;
     private final String VERSION = "1.0";
