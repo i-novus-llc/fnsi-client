@@ -26,12 +26,13 @@ import static org.junit.Assert.assertEquals;
 public class FnsiClientImplTest {
 
     private final String RESULT_OK = "OK";
-    private final String IDENTIFIER = "1.2.643.5.1.13.13.11.1080";
+    private final String IDENTIFIER = "1.2.643.5.1.13.13.99.2.114";
     private final int PAGE = 1;
     private final int SIZE = 200;
     private final int CONNECTION_TIME_OUT = 5000;
     private final int SOCKET_TIME_OUT = 5000;
     private final String VERSION = "1.0";
+    private final String USER_KEY = "TAKE YOURS FROM FNSI PROFILE";
 
     @Autowired
     private FnsiClient fnsiClient;
@@ -42,9 +43,10 @@ public class FnsiClientImplTest {
         query.setIdentifier(IDENTIFIER);
         query.setPage(PAGE);
         query.setSize(SIZE);
+        query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("https://nsi.rosminzdrav.ru:443/port/rest/versions");
+        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/versions");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -57,8 +59,9 @@ public class FnsiClientImplTest {
         PassportQueryDto query = new PassportQueryDto();
         query.setIdentifier(IDENTIFIER);
         query.setVersion(VERSION);
+        query.setUserKey(USER_KEY);
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("https://nsi.rosminzdrav.ru:443/port/rest/passport");
+        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/passport");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -73,9 +76,10 @@ public class FnsiClientImplTest {
         query.setVersion(VERSION);
         query.setPage(PAGE);
         query.setSize(SIZE);
+        query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("https://nsi.rosminzdrav.ru:443/port/rest/data");
+        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/data");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -90,9 +94,10 @@ public class FnsiClientImplTest {
         query.setPage(PAGE);
         query.setDate1(Calendar.getInstance().getTime());
         query.setSize(SIZE);
+        query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("https://nsi.rosminzdrav.ru:443/port/rest/data");
+        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/data");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -107,9 +112,10 @@ public class FnsiClientImplTest {
         query.setPage(PAGE);
         query.setDate1(Calendar.getInstance().getTime());
         query.setSize(SIZE);
+        query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("https://nsi.rosminzdrav.ru:443/port/rest/data");
+        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/data");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 

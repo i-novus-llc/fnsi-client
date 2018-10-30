@@ -46,7 +46,8 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public VersionsResponseDto findVersions(VersionsQueryDto query, SettingDto settings) throws ValidationsException {
         versionsValidator.doValidation(query, settings);
-        query.setUserKey(userKey);
+        if (userKey != null)
+            query.setUserKey(userKey);
         String stringResponse = versionsClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         VersionsResponseDto versionsResponseDto = null;
@@ -61,7 +62,8 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public PassportResponseDto findPassport(PassportQueryDto query, SettingDto settings) throws ValidationsException {
         passportValidator.doValidation(query, settings);
-        query.setUserKey(userKey);
+        if (userKey != null)
+            query.setUserKey(userKey);
         String stringResponse = passportClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         PassportResponseDto passportResponseDto = null;
@@ -76,7 +78,8 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public DataResponseDto findData(DataQueryDto query, SettingDto settings) throws ValidationsException {
         dataValidator.doValidation(query, settings);
-        query.setUserKey(userKey);
+        if (userKey != null)
+            query.setUserKey(userKey);
         String stringResponse = dataClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         DataResponseDto dataResponseDto = null;
@@ -91,7 +94,8 @@ public class FnsiClientImpl implements FnsiClient {
     @Override
     public CompareResponseDto findCompares(CompareQueryDto query, SettingDto settings) throws ValidationsException {
         compareValidator.doValidation(query, settings);
-        query.setUserKey(userKey);
+        if (userKey != null)
+            query.setUserKey(userKey);
         String stringResponse = compareClient.receiveResponse(query, settings);
         ObjectMapper mapper = new ObjectMapper();
         CompareResponseDto compareResponseDto = null;
