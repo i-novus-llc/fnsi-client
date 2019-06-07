@@ -40,10 +40,6 @@ publishing {
         }
     }
     repositories {
-        maven {
-            name "i-novus-snapshots"
-            url "http://maven.i-novus.ru/libs-snapshot-local"
-        }
 
         maven {
             name "i-novus-central"

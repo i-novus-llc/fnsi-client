@@ -27,7 +27,7 @@ ext {
 }
 
 allprojects {
-    version '1.1.5'
+    version '1.1.6'
     apply plugin: 'java'
     sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -38,10 +38,10 @@ allprojects {
     apply plugin: 'maven-publish'
     apply plugin: 'maven-publish-auth'
 
-    // For Gradle scripts'  maintenance and dependencies' cleaner
+/*    // For Gradle scripts'  maintenance and dependencies' cleaner
     apply plugin: 'nebula.lint'
     gradleLint.rules = ['all-dependency']
-
+*/
     compileJava.options.encoding = 'UTF-8'
     repositories {
         mavenCentral()

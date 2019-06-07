@@ -17,6 +17,7 @@ import ru.inovus.util.fnsi.client.service.api.dto.query.DataQueryDto;
 import ru.inovus.util.fnsi.client.service.api.dto.query.PassportQueryDto;
 import ru.inovus.util.fnsi.client.service.api.dto.query.VersionsQueryDto;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import static org.junit.Assert.assertEquals;
@@ -31,7 +32,7 @@ public class FnsiClientImplTest {
     private final int SIZE = 200;
     private final int CONNECTION_TIME_OUT = 5000;
     private final int SOCKET_TIME_OUT = 5000;
-    private final String VERSION = "1.0";
+    private final String VERSION = "2.165";
     private final String USER_KEY = "TAKE YOURS FROM FNSI PROFILE";
 
     @Autowired
@@ -92,7 +93,7 @@ public class FnsiClientImplTest {
         CompareQueryDto query = new CompareQueryDto();
         query.setIdentifier(IDENTIFIER);
         query.setPage(PAGE);
-        query.setDate1(Calendar.getInstance().getTime());
+        query.setDate1(new SimpleDateFormat(CompareQueryDto.DATE_FORMAT_PATTERN).format(Calendar.getInstance().getTime()));
         query.setSize(SIZE);
         query.setUserKey(USER_KEY);
 
@@ -110,7 +111,7 @@ public class FnsiClientImplTest {
         CompareQueryDto query = new CompareQueryDto();
 //        query.setIdentifier(IDENTIFIER);
         query.setPage(PAGE);
-        query.setDate1(Calendar.getInstance().getTime());
+        query.setDate1(new SimpleDateFormat(CompareQueryDto.DATE_FORMAT_PATTERN).format(Calendar.getInstance().getTime()));
         query.setSize(SIZE);
         query.setUserKey(USER_KEY);
 

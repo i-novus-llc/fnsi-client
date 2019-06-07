@@ -8,11 +8,15 @@ import java.util.Date;
 import java.util.Map;
 
 public class CompareQueryDto extends PageableQueryDto implements FieldValueBuilder {
-    private final String pattern = "yyyy-MM-dd";
+    @SuppressWarnings("WeakerAccess")
+    public static final String DATE_FORMAT_PATTERN = "yyyy-MM-dd HH:mm";
+
+    private static final String DATE_REGEXP_PATTERN = "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}";
+
     @NotBlank
-    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "date1 must be in format yyyy-MM-dd")
+    @Pattern(regexp = DATE_REGEXP_PATTERN, message = "date1 must be in format " + DATE_FORMAT_PATTERN)
     private String date1;
-    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "date2 date must be in format yyyy-MM-dd")
+    @Pattern(regexp = DATE_REGEXP_PATTERN, message = "date2 date must be in format " + DATE_FORMAT_PATTERN)
     private String date2;
 
     public String getDate1() {
@@ -20,7 +24,7 @@ public class CompareQueryDto extends PageableQueryDto implements FieldValueBuild
     }
 
     public void setDate1(Date date1) {
-        this.date1 = new SimpleDateFormat(pattern).format(date1);
+        this.date1 = new SimpleDateFormat(DATE_FORMAT_PATTERN).format(date1);
     }
 
     public void setDate1(String date1) {
@@ -28,7 +32,7 @@ public class CompareQueryDto extends PageableQueryDto implements FieldValueBuild
     }
 
     public void setDate2(Date date2) {
-        this.date2 = new SimpleDateFormat(pattern).format(date2);
+        this.date2 = new SimpleDateFormat(DATE_FORMAT_PATTERN).format(date2);
     }
 
     public String getDate2() {
