@@ -58,12 +58,12 @@ dependencies {
     compile("org.jboss.resteasy:resteasy-client:${resteasy_version}")
     compile "org.jboss.resteasy:resteasy-jackson2-provider:${resteasy_version}"
     compile("org.slf4j:slf4j-api:${org_slf4j_version}")
-    compile "org.slf4j:slf4j-simple:${org_slf4j_version}"
     compile("org.springframework:spring-beans:${org_springframework_version}")
     compile("org.springframework:spring-context:${org_springframework_version}")
     compile(project(":fnsi-client-service-api"))
     compileOnly("org.jboss.resteasy:resteasy-client:${resteasy_version}")
+
     testCompile "junit:junit:${junit_version}"
-    testCompile("org.springframework:spring-beans:${org_springframework_version}")
     testCompile("org.springframework:spring-test:4.3.9.RELEASE")
+    testCompile "org.slf4j:slf4j-simple:${org_slf4j_version}"
 }
