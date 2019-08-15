@@ -4,6 +4,8 @@ import java.util.List;
 
 public class DataQueryDto extends PageableQueryDto {
 
+    private static final String QUERY_DTO_NAME = "data";
+
     /**
      * Версия справочника.
      * <p>
@@ -83,5 +85,13 @@ public class DataQueryDto extends PageableQueryDto {
 
     public void setFilters( List<String> filters ) {
         this.filters = filters;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getQueryDtoName() {
+        return QUERY_DTO_NAME;
     }
 }

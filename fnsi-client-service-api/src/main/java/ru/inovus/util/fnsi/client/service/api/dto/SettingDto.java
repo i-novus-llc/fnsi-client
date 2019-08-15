@@ -18,6 +18,11 @@ public class SettingDto {
     private String serviceUrl;
 
     /**
+     * Автопростановка необходимого пути в serviceUrl.
+     */
+    private Boolean isAutoRestPath;
+
+    /**
      * Максимальное время ожидания установки
      * первоначального соединения с удалённым сервиcом.
      */
@@ -37,6 +42,14 @@ public class SettingDto {
 
     public void setServiceUrl(String serviceUrl) {
         this.serviceUrl = serviceUrl;
+    }
+
+    public Boolean getIsAutoRestPath() {
+        return isAutoRestPath;
+    }
+
+    public void setIsAutoRestPath(Boolean isAutoRestPath) {
+        this.isAutoRestPath = isAutoRestPath;
     }
 
     public long getConnectionTimeOut() {

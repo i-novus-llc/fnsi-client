@@ -2,7 +2,9 @@ package ru.inovus.util.fnsi.client.service.api.dto.query;
 
 import java.util.Map;
 
-public class PassportQueryDto extends IdentifiableQueryDto implements FieldValueBuilder {
+public class PassportQueryDto extends IdentifiableQueryDto implements QueryDto {
+
+    private static final String QUERY_DTO_NAME = "passport";
 
     /**
      * Версия справочника. По умолчанию текущая
@@ -21,8 +23,17 @@ public class PassportQueryDto extends IdentifiableQueryDto implements FieldValue
      * {@inheritDoc}
      */
     @Override
-    public Map<String, String> buildFieldValueMap() {
-        Map<String, String> built = super.buildFieldValueMap();
+    public String getQueryDtoName() {
+        return QUERY_DTO_NAME;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map<String, String> buildParameterMap() {
+
+        Map<String, String> built = super.buildParameterMap();
         if (version != null) {
             built.put("version", version);
         }

@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class IdentifiableQueryDto implements FieldValueBuilder {
+public abstract class IdentifiableQueryDto implements QueryDto {
 
     /**
      * Идентификатор справочника.
@@ -41,7 +41,7 @@ public abstract class IdentifiableQueryDto implements FieldValueBuilder {
     /**
      * {@inheritDoc}
      */
-    public Map<String, String> buildFieldValueMap() {
+    public Map<String, String> buildParameterMap() {
 
         Map<String, String> built = new HashMap<>();
 
