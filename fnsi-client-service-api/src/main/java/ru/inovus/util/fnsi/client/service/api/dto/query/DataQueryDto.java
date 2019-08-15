@@ -1,7 +1,5 @@
 package ru.inovus.util.fnsi.client.service.api.dto.query;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import java.util.List;
 
 public class DataQueryDto extends PageableQueryDto {
@@ -9,7 +7,6 @@ public class DataQueryDto extends PageableQueryDto {
     /**
      * Версия справочника. По умолчанию текущая
      */
-    @NotBlank
     private String version;
 
     /**
@@ -27,6 +24,7 @@ public class DataQueryDto extends PageableQueryDto {
      * Направление сортировки: ASC - по возрастанию, DESC — по убыванию
      */
     private SortingDirection sortingDirection;
+
     /**
      * Массив строк, задающий условия отбора данных, объединяемых по И.
      * Каждая строка представляет собой значения нижеприведенных полей через разделитель «|» FIELD – наименование поля справочника VALUE – значение поля TYPE – тип поиска.

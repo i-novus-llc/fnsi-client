@@ -1,14 +1,12 @@
 package ru.inovus.util.fnsi.client.service.api.dto.query;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import java.util.Map;
 
 public class PassportQueryDto extends IdentifiableQueryDto implements FieldValueBuilder {
+
     /**
      * Версия справочника. По умолчанию текущая
      */
-    @NotBlank
     private String version;
 
     public String getVersion() {
