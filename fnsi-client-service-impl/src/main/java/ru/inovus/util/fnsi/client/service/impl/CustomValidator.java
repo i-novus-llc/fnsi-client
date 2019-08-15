@@ -13,22 +13,26 @@ import javax.validation.Validator;
 import java.util.Set;
 
 @Component
-public class CustomValidator<QueryDto extends IdentifiableQueryDto> {
+@SuppressWarnings({"unused", "WeakerAccess"})
+public class CustomValidator<Q extends IdentifiableQueryDto> {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomValidator.class);
 
     @Autowired
     private Validator validator;
 
-    public void doValidation(QueryDto query, SettingDto settings) throws ValidationsException {
+    @SuppressWarnings("squid:S2589")
+    public void doValidation(Q query, SettingDto settings) throws ValidationsException {
+
         ValidationsException validationsException = null;
-        Set<ConstraintViolation<QueryDto>> queryViolations = validator.validate(query);
+        Set<ConstraintViolation<Q>> queryViolations = validator.validate(query);
+
         if (!queryViolations.isEmpty()) {
             if (validationsException == null) {
                 validationsException = new ValidationsException();
             }
-            for (ConstraintViolation<QueryDto> queryViolation : queryViolations) {
-                logger.warn("Malformed query's fields. " + queryViolation);
+            for (ConstraintViolation<Q> queryViolation : queryViolations) {
+                logger.warn("Malformed query's fields. {}", queryViolation);
                 validationsException.getQueryViolations().add(queryViolation);
             }
         }
@@ -39,7 +43,7 @@ public class CustomValidator<QueryDto extends IdentifiableQueryDto> {
                 validationsException = new ValidationsException();
             }
             for (ConstraintViolation<SettingDto> settingsViolation : settingsViolations) {
-                logger.warn("Malformed setting's fields. " + settingsViolation);
+                logger.warn("Malformed setting's fields. {}", settingsViolation);
                 validationsException.getSettingsViolations().add(settingsViolation);
             }
         }
