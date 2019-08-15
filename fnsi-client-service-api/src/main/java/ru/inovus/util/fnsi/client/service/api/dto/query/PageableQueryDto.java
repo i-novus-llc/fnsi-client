@@ -9,6 +9,7 @@ public abstract class PageableQueryDto extends IdentifiableQueryDto implements F
      */
     @Min(value = 1L, message = "Page number must be greater than zero")
     protected int page;
+
     /**
      * Количество элементов на странице.
      */
@@ -39,6 +40,7 @@ public abstract class PageableQueryDto extends IdentifiableQueryDto implements F
         Map<String, String> built = super.buildFieldValueMap();
         built.put("page", String.valueOf(page));
         built.put("size", String.valueOf(size));
+
         return built;
     }
 }

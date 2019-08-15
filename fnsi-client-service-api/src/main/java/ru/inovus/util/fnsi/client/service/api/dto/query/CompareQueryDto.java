@@ -16,6 +16,7 @@ public class CompareQueryDto extends PageableQueryDto implements FieldValueBuild
     @NotBlank
     @Pattern(regexp = DATE_REGEXP_PATTERN, message = "date1 must be in format " + DATE_FORMAT_PATTERN)
     private String date1;
+
     @Pattern(regexp = DATE_REGEXP_PATTERN, message = "date2 date must be in format " + DATE_FORMAT_PATTERN)
     private String date2;
 
