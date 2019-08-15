@@ -14,30 +14,32 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class RestClient<QueryDto extends FieldValueBuilder> {
+@SuppressWarnings("WeakerAccess")
+public class RestClient<Q extends FieldValueBuilder> {
 
     private static final Logger logger = LoggerFactory.getLogger(RestClient.class);
-    private final String CHARSET = "charset=UTF-8";
+    private static final String CHARSET = "charset=UTF-8";
 
-    public String receiveResponse(QueryDto query, SettingDto settings) {
+    public String receiveResponse(Q query, SettingDto settings) {
+
         ResteasyClient client = new ResteasyClientBuilder()
                 .establishConnectionTimeout(settings.getConnectionTimeOut(), TimeUnit.MILLISECONDS)
                 .socketTimeout(settings.getSocketTimeOut(), TimeUnit.MILLISECONDS)
                 .hostnameVerification(ResteasyClientBuilder.HostnameVerificationPolicy.ANY)
                 .build();
 
-
         WebTarget target = client.target(settings.getServiceUrl());
         Map<String, String> parameters = query.buildFieldValueMap();
-        for (String parameter : parameters.keySet()) {
+
+        for (Map.Entry<String, String> entry: parameters.entrySet()) {
             try {
-                target = target.queryParam(parameter, parameters.get(parameter));
+                target = target.queryParam(entry.getKey(), entry.getValue());
+
             } catch (NullPointerException e) {
-                logger.warn("The value of parameter " + parameter + " was null");
+                logger.warn("The value of parameter {} was null", entry.getKey());
             }
         }
+
         return target.request().accept(MediaType.APPLICATION_JSON + ";" + CHARSET).get(String.class);
-
     }
-
 }
