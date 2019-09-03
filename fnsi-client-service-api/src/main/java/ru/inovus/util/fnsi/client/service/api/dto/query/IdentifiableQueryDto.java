@@ -15,7 +15,7 @@ public abstract class IdentifiableQueryDto implements QueryDto {
      * Обязательное поле.
      */
     @NotBlank(message = "Identifier of resource must be present")
-    @Pattern(regexp = "(\\d+?\\.){2,10}\\d+",
+    @Pattern(regexp = "(\\d+?\\.){8,10}\\d+",
             message = "Identifier must contain numbers divided by dot")
     private String identifier;
 
