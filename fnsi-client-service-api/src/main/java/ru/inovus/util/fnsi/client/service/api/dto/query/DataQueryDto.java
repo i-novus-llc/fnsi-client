@@ -1,36 +1,49 @@
 package ru.inovus.util.fnsi.client.service.api.dto.query;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import java.util.List;
 
 public class DataQueryDto extends PageableQueryDto {
 
+    private static final String QUERY_DTO_NAME = "data";
+
     /**
-     * Версия справочника. По умолчанию текущая
+     * Версия справочника.
+     * <p>
+     * По умолчанию текущая.
      */
-    @NotBlank
     private String version;
 
     /**
      * Наименования столбцов, которые необходимо отобразить в результирующем наборе.
-     * По умолчанию — все
+     * <p>
+     * По умолчанию — все.
      */
     private List<String> columns;
 
     /**
-     * Наименование столбца, задающий порядок cортировки отображаемых данных
+     * Наименование столбца, задающий порядок cортировки отображаемых данных.
      */
     private String sorting;
 
     /**
-     * Направление сортировки: ASC - по возрастанию, DESC — по убыванию
+     * Направление сортировки:<br />
+     * ASC - по возрастанию,<br />
+     * DESC — по убыванию.
      */
     private SortingDirection sortingDirection;
+
     /**
-     * Массив строк, задающий условия отбора данных, объединяемых по И.
-     * Каждая строка представляет собой значения нижеприведенных полей через разделитель «|» FIELD – наименование поля справочника VALUE – значение поля TYPE – тип поиска.
-     * TYPE может принимать следующие значения: EXACT — точное совпадение, LIKE — вхождение значения. По умолчанию EXACT
+     * Массив строк, задающий условия отбора данных, объединяемых по "И".
+     * <p>
+     * Каждая строка представляет собой значения нижеприведённых полей через разделитель «|»:<br />
+     * FIELD – наименование поля справочника,<br />
+     * VALUE – значение поля,<br />
+     * TYPE – тип поиска.
+     * <p>
+     * TYPE может принимать следующие значения:<br />
+     * EXACT — точное совпадение,<br />
+     * LIKE — вхождение значения.<br />
+     * По умолчанию EXACT.
      */
     private List<String> filters;
 
@@ -72,5 +85,13 @@ public class DataQueryDto extends PageableQueryDto {
 
     public void setFilters( List<String> filters ) {
         this.filters = filters;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getQueryDtoName() {
+        return QUERY_DTO_NAME;
     }
 }

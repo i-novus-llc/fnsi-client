@@ -7,8 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-public class CompareQueryDto extends PageableQueryDto implements FieldValueBuilder {
-    @SuppressWarnings("WeakerAccess")
+public class CompareQueryDto extends PageableQueryDto implements QueryDto {
+
+    private static final String QUERY_DTO_NAME = "compare";
+
     public static final String DATE_FORMAT_PATTERN = "yyyy-MM-dd HH:mm";
 
     private static final String DATE_REGEXP_PATTERN = "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}";
@@ -16,6 +18,7 @@ public class CompareQueryDto extends PageableQueryDto implements FieldValueBuild
     @NotBlank
     @Pattern(regexp = DATE_REGEXP_PATTERN, message = "date1 must be in format " + DATE_FORMAT_PATTERN)
     private String date1;
+
     @Pattern(regexp = DATE_REGEXP_PATTERN, message = "date2 date must be in format " + DATE_FORMAT_PATTERN)
     private String date2;
 
@@ -47,9 +50,17 @@ public class CompareQueryDto extends PageableQueryDto implements FieldValueBuild
      * {@inheritDoc}
      */
     @Override
-    public Map<String, String> buildFieldValueMap() {
+    public String getQueryDtoName() {
+        return QUERY_DTO_NAME;
+    }
 
-        Map<String, String> built = super.buildFieldValueMap();
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map<String, String> buildParameterMap() {
+
+        Map<String, String> built = super.buildParameterMap();
         if (date1 != null) {
             built.put("date1", date1);
         }

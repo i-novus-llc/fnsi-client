@@ -3,12 +3,15 @@ package ru.inovus.util.fnsi.client.service.api.dto.query;
 import javax.validation.constraints.Min;
 import java.util.Map;
 
-public abstract class PageableQueryDto extends IdentifiableQueryDto implements FieldValueBuilder {
+@SuppressWarnings("WeakerAccess")
+public abstract class PageableQueryDto extends IdentifiableQueryDto implements QueryDto {
+
     /**
      * Номер страницы.
      */
     @Min(value = 1L, message = "Page number must be greater than zero")
     protected int page;
+
     /**
      * Количество элементов на странице.
      */
@@ -35,10 +38,12 @@ public abstract class PageableQueryDto extends IdentifiableQueryDto implements F
      * {@inheritDoc}
      */
     @Override
-    public Map<String, String> buildFieldValueMap() {
-        Map<String, String> built = super.buildFieldValueMap();
+    public Map<String, String> buildParameterMap() {
+
+        Map<String, String> built = super.buildParameterMap();
         built.put("page", String.valueOf(page));
         built.put("size", String.valueOf(size));
+
         return built;
     }
 }

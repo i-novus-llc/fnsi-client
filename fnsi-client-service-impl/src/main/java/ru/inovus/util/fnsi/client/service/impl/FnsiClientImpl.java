@@ -20,9 +20,14 @@ import ru.inovus.util.fnsi.client.service.api.dto.query.VersionsQueryDto;
 import java.io.IOException;
 
 @Service
+@SuppressWarnings("unused")
 public class FnsiClientImpl implements FnsiClient {
+
     private static final Logger logger = LoggerFactory.getLogger(FnsiClientImpl.class);
 
+    /**
+     * Ключ пользователя по умолчанию.
+     */
     private String userKey;
 
     @Autowired
@@ -45,14 +50,18 @@ public class FnsiClientImpl implements FnsiClient {
 
     @Override
     public VersionsResponseDto findVersions(VersionsQueryDto query, SettingDto settings) throws ValidationsException {
+
         versionsValidator.doValidation(query, settings);
         if (userKey != null)
             query.setUserKey(userKey);
+
         String stringResponse = versionsClient.receiveResponse(query, settings);
+
         ObjectMapper mapper = new ObjectMapper();
         VersionsResponseDto versionsResponseDto = null;
         try {
             versionsResponseDto = mapper.readValue(stringResponse, VersionsResponseDto.class);
+
         } catch (IOException e) {
             logParseResponseException(settings.getServiceUrl(), stringResponse);
         }
@@ -61,14 +70,18 @@ public class FnsiClientImpl implements FnsiClient {
 
     @Override
     public PassportResponseDto findPassport(PassportQueryDto query, SettingDto settings) throws ValidationsException {
+
         passportValidator.doValidation(query, settings);
         if (userKey != null)
             query.setUserKey(userKey);
+
         String stringResponse = passportClient.receiveResponse(query, settings);
+
         ObjectMapper mapper = new ObjectMapper();
         PassportResponseDto passportResponseDto = null;
         try {
             passportResponseDto = mapper.readValue(stringResponse, PassportResponseDto.class);
+
         } catch (IOException e) {
             logParseResponseException(settings.getServiceUrl(), stringResponse);
         }
@@ -77,14 +90,18 @@ public class FnsiClientImpl implements FnsiClient {
 
     @Override
     public DataResponseDto findData(DataQueryDto query, SettingDto settings) throws ValidationsException {
+
         dataValidator.doValidation(query, settings);
         if (userKey != null)
             query.setUserKey(userKey);
+
         String stringResponse = dataClient.receiveResponse(query, settings);
+
         ObjectMapper mapper = new ObjectMapper();
         DataResponseDto dataResponseDto = null;
         try {
             dataResponseDto = mapper.readValue(stringResponse, DataResponseDto.class);
+
         } catch (IOException e) {
             logParseResponseException(settings.getServiceUrl(), stringResponse);
         }
@@ -93,14 +110,18 @@ public class FnsiClientImpl implements FnsiClient {
 
     @Override
     public CompareResponseDto findCompares(CompareQueryDto query, SettingDto settings) throws ValidationsException {
+
         compareValidator.doValidation(query, settings);
         if (userKey != null)
             query.setUserKey(userKey);
+
         String stringResponse = compareClient.receiveResponse(query, settings);
+
         ObjectMapper mapper = new ObjectMapper();
         CompareResponseDto compareResponseDto = null;
         try {
             compareResponseDto = mapper.readValue(stringResponse, CompareResponseDto.class);
+
         } catch (IOException e) {
             logParseResponseException(settings.getServiceUrl(), stringResponse);
         }
@@ -109,7 +130,7 @@ public class FnsiClientImpl implements FnsiClient {
 
 
     private void logParseResponseException(String serviceUrl, String stringResponse) {
-        logger.error("Could not parse response " + stringResponse + "from " + serviceUrl);
+        logger.error("Could not parse response {} from {}", stringResponse, serviceUrl);
     }
 
     public void setUserKey(String userKey) {

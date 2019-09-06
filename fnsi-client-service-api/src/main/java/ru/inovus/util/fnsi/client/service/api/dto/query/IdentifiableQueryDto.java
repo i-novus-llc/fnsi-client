@@ -1,20 +1,29 @@
 package ru.inovus.util.fnsi.client.service.api.dto.query;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Pattern;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
-public abstract class IdentifiableQueryDto implements FieldValueBuilder {
+public abstract class IdentifiableQueryDto implements QueryDto {
+
     /**
-     * Идентификатор справочника. Обязательное поле.
+     * Идентификатор справочника.
+     * <p>
+     * Обязательное поле.
      */
     @NotBlank(message = "Identifier of resource must be present")
-    @Pattern(regexp = "(\\d+?\\.){8,10}\\d+", message = "Identifier must contain numbers divided by dot")
+    @Pattern(regexp = "(\\d+?\\.){8,10}\\d+",
+            message = "Identifier must contain numbers divided by dot")
     private String identifier;
 
+    /**
+     * Ключ пользователя.
+     * <p>
+     * Маркер безопасности.
+     */
     private String userKey;
 
     public String getIdentifier() {
@@ -32,12 +41,18 @@ public abstract class IdentifiableQueryDto implements FieldValueBuilder {
     /**
      * {@inheritDoc}
      */
-    public Map<String, String> buildFieldValueMap() {
+    public Map<String, String> buildParameterMap() {
+
         Map<String, String> built = new HashMap<>();
+
         if (identifier != null) {
             built.put("identifier", identifier);
         }
-        Optional.ofNullable(userKey).ifPresent(v -> built.put("userKey", v));
+
+        if (!StringUtils.isEmpty(userKey)) {
+            built.put("userKey", userKey);
+        }
+
         return built;
     }
 }
