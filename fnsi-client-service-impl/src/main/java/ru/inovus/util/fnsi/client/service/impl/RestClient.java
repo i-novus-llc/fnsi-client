@@ -1,5 +1,6 @@
 package ru.inovus.util.fnsi.client.service.impl;
 
+import org.apache.commons.lang.BooleanUtils;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class RestClient<Q extends QueryDto> {
                 .build();
 
         String serviceUrl = settings.getServiceUrl();
-        if (settings.getIsAutoRestPath()) {
+        if (BooleanUtils.isTrue(settings.getIsAutoRestPath())) {
             serviceUrl = String.format(SERVICE_URL_PATH_FORMAT,
                     serviceUrl, SERVICE_URL_REST_PATH, query.getQueryDtoName());
         }
