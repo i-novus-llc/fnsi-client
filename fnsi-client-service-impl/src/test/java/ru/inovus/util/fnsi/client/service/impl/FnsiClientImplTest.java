@@ -26,6 +26,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class FnsiClientImplTest {
 
+    private static final String SERVICE_BASE_URL = "http://nsi.rosminzdrav.ru:80/port/rest/";
+
     private final String RESULT_OK = "OK";
     private final String IDENTIFIER = "1.2.643.5.1.13.13.99.2.114";
     private final int PAGE = 1;
@@ -47,7 +49,7 @@ public class FnsiClientImplTest {
         query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/versions");
+        settings.setServiceUrl(SERVICE_BASE_URL + "versions");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -62,7 +64,7 @@ public class FnsiClientImplTest {
         query.setVersion(VERSION);
         query.setUserKey(USER_KEY);
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/passport");
+        settings.setServiceUrl(SERVICE_BASE_URL + "passport");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -80,7 +82,7 @@ public class FnsiClientImplTest {
         query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/data");
+        settings.setServiceUrl(SERVICE_BASE_URL + "data");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -98,7 +100,7 @@ public class FnsiClientImplTest {
         query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/data");
+        settings.setServiceUrl(SERVICE_BASE_URL + "data");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
@@ -116,7 +118,7 @@ public class FnsiClientImplTest {
         query.setUserKey(USER_KEY);
 
         SettingDto settings = new SettingDto();
-        settings.setServiceUrl("http://nsi.rosminzdrav.ru:80/port/rest/data");
+        settings.setServiceUrl(SERVICE_BASE_URL + "data");
         settings.setConnectionTimeOut(CONNECTION_TIME_OUT);
         settings.setSocketTimeOut(SOCKET_TIME_OUT);
 
